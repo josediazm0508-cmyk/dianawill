@@ -1,0 +1,285 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* ===================================================
+   RESET & BASE
+=================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Fuente body: DM Sans. Titulos de sección: Merriweather (ver index.css) */
+body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--negro-ebano);
+    background-color: var(--blanco-hueso);
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+/* ===================================================
+   VARIABLES DE COLOR
+=================================================== */
+:root {
+    /* Bases */
+    --negro-ebano:      #1a1a1a;
+    --negro-suave:      #333333;
+    --beige-crema:      #f5f5dc;
+    --beige-claro:      #fafaf0;
+    --blanco-hueso:     #f8f9fa;
+
+    /* Dorados */
+    --dorado-brillante: #d4af37;
+    --dorado-mate:      #c5a059;
+    --dorado-oscuro:    #997a3d;
+
+    /* Grises */
+    --gris-oscuro:      #4a4a4a;
+    --gris-medio:       #8e8e8e;
+    --gris-plata:       #bdc3c7;
+}
+
+/* ===================================================
+   NAVBAR
+=================================================== */
+nav {
+    width: 100%;
+    display: flex;
+    background-color: var(--negro-ebano);
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    height: 90px;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.divImgNav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+nav img {
+    height: 56px;
+    width: 56px;
+    object-fit: contain;
+}
+
+nav h1 {
+    color: var(--dorado-mate);
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+nav h4 {
+    color: var(--gris-medio);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+#btnMenuDesplegable {
+    color: var(--blanco-hueso);
+    font-size: 36px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Nav links (desktop — ocultos en móvil, visibles en 768px+) */
+.optionsNav {
+    display: none;
+    align-items: center;
+    gap: 28px;
+}
+
+.optionsNav > div:first-child {
+    display: flex;
+    gap: 24px;
+}
+
+.optionsNav > div:first-child a {
+    text-decoration: none;
+    color: var(--gris-plata);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease;
+}
+
+.optionsNav > div:first-child a:hover {
+    color: var(--dorado-brillante);
+}
+
+.optionsNav > div:last-child {
+    display: flex;
+    gap: 14px;
+}
+
+.optionsNav .icono {
+    color: var(--gris-plata);
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.optionsNav .icono:hover {
+    color: var(--dorado-brillante);
+}
+
+/* ===================================================
+   OVERLAY (menú móvil)
+=================================================== */
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 150;
+    display: none;
+}
+
+/* ===================================================
+   MENÚ MÓVIL
+=================================================== */
+#opcionesMobile {
+    display: none;
+    top: 0;
+    right: 0;
+    width: 72vw;
+    max-width: 320px;
+    height: 100vh;
+    position: fixed;
+    z-index: 200;
+    background-color: var(--negro-ebano);
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.divBtnCerrarMenu {
+    position: sticky;
+    top: 0;
+    padding: 0 16px;
+    height: 90px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--blanco-hueso);
+    border-bottom: 1px solid var(--gris-oscuro);
+    background-color: var(--negro-ebano);
+    z-index: 1;
+}
+
+.divBtnCerrarMenu h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--blanco-hueso);
+}
+
+.divBtnCerrarMenu i {
+    font-size: 36px;
+    cursor: pointer;
+    color: var(--gris-plata);
+    transition: color 0.2s;
+}
+
+.divBtnCerrarMenu i:hover {
+    color: var(--dorado-brillante);
+}
+
+.btnsOpcionesMobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px 20px;
+    gap: 8px;
+    flex: 1;
+}
+
+.btnsOpcionesMobile a {
+    text-decoration: none;
+    color: var(--gris-plata);
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 12px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btnsOpcionesMobile a:hover {
+    color: var(--dorado-brillante);
+    background-color: rgba(212, 175, 55, 0.08);
+}
+
+.social {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    gap: 16px;
+    border-top: 1px solid var(--gris-oscuro);
+}
+
+.social a {
+    color: var(--dorado-brillante);
+    font-size: 22px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.social a:hover {
+    opacity: 0.75;
+}
+
+/* ===================================================
+   ANIMACIONES MENÚ
+=================================================== */
+.entrada {
+    animation: entrada 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.salida {
+    animation: salida 0.35s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+@keyframes entrada {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(0);    }
+}
+
+@keyframes salida {
+    from { transform: translateX(0);    }
+    to   { transform: translateX(100%); }
+}
+
+/* ===================================================
+   MEDIA QUERIES — NAV
+=================================================== */
+@media (min-width: 768px) {
+    #btnMenuDesplegable {
+        display: none;
+    }
+
+    .optionsNav {
+        display: flex;
+    }
+}
